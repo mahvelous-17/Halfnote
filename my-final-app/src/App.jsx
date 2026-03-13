@@ -21,8 +21,7 @@ function App() {
       </Routes>
     </BrowserRouter>
     
-    <h1>Hello World</h1>
-  <p>This is the starter page for Halfnote Healing</p>
+ 
 </>
   );
 }
