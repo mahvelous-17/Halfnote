@@ -14,7 +14,7 @@ function App() {
         <Link to="/profile">Profile</Link>
       </nav>
 
-      <Routes>
+      <Routes>cd folder-name
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
