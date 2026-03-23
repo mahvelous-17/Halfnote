@@ -1,18 +1,17 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 
 function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [showMore, setShowMore] = useState(false);
-  const [likes, setLikes] = useState(0);
+  const [started, setStarted] = useState(false);
 
   return (
     <div className="container mt-4 text-center">
-      <h1>Hello World</h1>
-      <p>This is the starter page for Halfnote Healing</p>
+      <h1>Halfnote Healing</h1>
+      <p style={{ fontStyle: "italic", marginBottom: "2rem" }}>
+        "Where your problems are solved and guided through music"
+      </p>
 
       <div className="row justify-content-center mt-4">
-        <div className="col-md-4">
+        <div className="col-md-6">
           <pre
             style={{
               color: "black",
@@ -54,38 +53,18 @@ function Home() {
         </div>
       </div>
 
-      <h3 className="mt-4">Project Sections</h3>
       <button
-        className="btn btn-primary mb-2"
-        onClick={() => setMenuOpen(!menuOpen)}
+        className="btn btn-success btn-lg mt-4"
+        onClick={() => setStarted(!started)}
       >
-        ☰ Menu
+        Start Your Daily Activity
       </button>
-      {menuOpen && (
-        <ul className="list-unstyled">
-          <li><Link to="/">Home Page</Link></li>
-          <li><Link to="/about">Therapy</Link></li>
-          <li><Link to="/profile">Past Entries</Link></li>
-        </ul>
+
+      {started && (
+        <p className="mt-3" style={{ fontWeight: "bold" }}>
+          Let’s get started on today’s musical journey!
+        </p>
       )}
-
-      <div className="border p-3 mt-4" style={{ borderColor: "rgba(255,255,255,0.3)" }}>
-        <p>This is a placeholder section for future content.</p>
-        <button
-          className="btn btn-info me-2"
-          onClick={() => setShowMore(!showMore)}
-        >
-          {showMore ? "Show Less 🔽" : "Show More 📖"}
-        </button>
-        {showMore && <p>Here’s some extra info that appears when you click "Show More".</p>}
-
-        <button
-          className="btn btn-danger"
-          onClick={() => setLikes(likes + 1)}
-        >
-          ❤️ {likes}
-        </button>
-      </div>
     </div>
   );
 }
