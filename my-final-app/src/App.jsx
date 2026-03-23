@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
@@ -6,11 +7,8 @@ import Profile from "./pages/Profile";
 function App() {
   return (
     <BrowserRouter>
-      <nav>
-        <Link to="/">Home</Link> |{" "}
-        <Link to="/about">About</Link> |{" "}
-        <Link to="/profile">Profile</Link>
-      </nav>
+      {}
+      <Header />
 
       <Routes>
         <Route path="/" element={<Home />} />
