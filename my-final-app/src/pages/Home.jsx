@@ -10,8 +10,8 @@ function Home() {
         "Where your problems are solved and guided through music"
       </p>
 
-      <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
-        <pre
+      <div className="bg-gray-900 border-4 border-gray-300 rounded-2xl shadow-lg hover:shadow-2xl hover:bg-gray-800 transition-all duration-300 p-6 m-6 max-w-md text-center mx-auto" style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
+        <pre className="text-xs text-gray-300 overflow-auto "
           style={{
             color: "white",
             fontSize: "10px",
