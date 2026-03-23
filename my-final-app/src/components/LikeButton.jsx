@@ -13,5 +13,5 @@ function LikeButton() {
   );
 }
 
-// MAKE SURE THIS LINE IS HERE:
+
 export default LikeButton;
