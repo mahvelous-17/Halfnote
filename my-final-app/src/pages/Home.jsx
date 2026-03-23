@@ -14,8 +14,8 @@ function Home() {
         <pre className="text-xs text-gray-300 overflow-auto "
           style={{
             color: "white",
-            fontSize: "10px",
-            lineHeight: "10px",
+            fontSize: "15px",
+            lineHeight: "16px",
             textAlign: "center",
             whiteSpace: "pre",
             margin: "0 auto",
