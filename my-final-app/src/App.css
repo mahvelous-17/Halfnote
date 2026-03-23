@@ -1,3 +1,25 @@
+* {
+  color: white !important;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #4a90e2 !important;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 :root {
   background-color: #0762a8;
   color: white;
