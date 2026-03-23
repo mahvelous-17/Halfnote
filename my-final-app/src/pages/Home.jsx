@@ -20,7 +20,8 @@ function Home() {
             whiteSpace: "pre",
             margin: "0 auto",
             background: "none",
-            border: "none"
+            border: "none",
+            
           }}
         >
 {`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣠⣤⣤⣤⣶⣶⣾⣿⡇⠀
@@ -53,7 +54,7 @@ function Home() {
 
       <button
         style={{
-          backgroundColor: "black",
+          backgroundColor: "#1a1a1a",
           color: "white",
           padding: "15px 30px",
           fontSize: "1.2rem",

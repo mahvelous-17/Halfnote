@@ -12,7 +12,7 @@ function About() {
           name="Andrew"
           title="Main Coder"
           blurb="I design and code the core features."
-          extra="Computer Engineering student at Cal Poly SLO."
+          extra="Future Computer Engineering student at Cal Poly SLO."
           img={AndrewImg}
           emoji="💻"
         />
@@ -20,7 +20,7 @@ function About() {
           name="Ryan"
           title="Project Manager"
           blurb="I make sure the project stays on track."
-          extra="Electrical Engineering student."
+          extra="Future Electrical Engineering student."
           img={RyanImg}
           emoji="📋"
         />
