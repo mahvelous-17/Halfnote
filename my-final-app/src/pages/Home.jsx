@@ -4,26 +4,25 @@ function Home() {
   const [started, setStarted] = useState(false);
 
   return (
-    <div className="container mt-4 text-center">
-      <h1>Halfnote Healing</h1>
-      <p style={{ fontStyle: "italic", marginBottom: "2rem" }}>
+    <div style={{ padding: "40px 20px", textAlign: "center", minHeight: "80vh" }}>
+      <h1 style={{ color: "white" }}>Halfnote Healing</h1>
+      <p style={{ color: "white", fontStyle: "italic", marginBottom: "2rem" }}>
         "Where your problems are solved and guided through music"
       </p>
 
-      <div className="row justify-content-center mt-4">
-        <div className="col-md-6">
-          <pre
-            style={{
-              color: "black",
-              fontSize: "8px",
-              lineHeight: "8px",
-              textAlign: "center",
-              whiteSpace: "pre-wrap",
-              wordBreak: "break-word",
-              overflow: "hidden",
-              margin: 0,
-            }}
-          >
+      <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
+        <pre
+          style={{
+            color: "white",
+            fontSize: "10px",
+            lineHeight: "10px",
+            textAlign: "center",
+            whiteSpace: "pre",
+            margin: "0 auto",
+            background: "none",
+            border: "none"
+          }}
+        >
 {`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣠⣤⣤⣤⣶⣶⣾⣿⡇⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⡿⠿⠿⠿⠟⠛⠛⢻⣿⣿⡇⠀
@@ -49,19 +48,27 @@ function Home() {
 ⠀⠀⠀⠀⠀⣿⣿⠀⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⢸⣿⣿⡇⠀⠀
 ⠀⠀⠀⠀⠀⣿⣿⢀⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣸⣿⣿⡇⠀⠀
 ⠀⠀⠀⠀⠀⠙⠛⠀⠙⠋⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠋⠈⠛⠋⠀`}
-          </pre>
-        </div>
+        </pre>
       </div>
 
       <button
-        className="btn btn-success btn-lg mt-4"
-        onClick={() => setStarted(!started)}
+        style={{
+          backgroundColor: "black",
+          color: "white",
+          padding: "15px 30px",
+          fontSize: "1.2rem",
+          border: "none",
+          borderRadius: "8px",
+          marginTop: "30px",
+          cursor: "pointer"
+        }}
+        onClick={() => {}} 
       >
         Start Your Daily Activity
       </button>
 
       {started && (
-        <p className="mt-3" style={{ fontWeight: "bold" }}>
+        <p style={{ marginTop: "20px", fontWeight: "bold", color: "white" }}>
           Let’s get started on today’s musical journey!
         </p>
       )}
