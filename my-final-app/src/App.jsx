@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
+import MoodEntry from "./pages/MoodEntry";
 import "./App.css";
 
 function App() {
