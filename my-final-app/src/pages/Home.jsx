@@ -11,16 +11,17 @@ function Home() {
       </p>
 
       <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
-        <pre
+        <pre className="text-xs text-gray-300 overflow-auto "
           style={{
             color: "white",
-            fontSize: "10px",
-            lineHeight: "10px",
+            fontSize: "15px",
+            lineHeight: "17px",
             textAlign: "center",
             whiteSpace: "pre",
             margin: "0 auto",
             background: "none",
-            border: "none"
+            border: "none",
+            
           }}
         >
 {`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣠⣤⣤⣤⣶⣶⣾⣿⡇⠀
@@ -53,7 +54,7 @@ function Home() {
 
       <button
         style={{
-          backgroundColor: "black",
+          backgroundColor: "#1a1a1a",
           color: "white",
           padding: "15px 30px",
           fontSize: "1.2rem",

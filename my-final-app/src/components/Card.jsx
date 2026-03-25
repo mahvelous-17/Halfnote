@@ -12,7 +12,7 @@ function Card({ name, title, blurb, extra, img, emoji }) {
       <p style={{ color: "white", fontWeight: "bold" }}>{title}</p>
       <p style={{ color: "white" }}>{blurb}</p>
 
-      <button onClick={() => setIsOpen(!isOpen)} style={{ background: "none", border: "1px solid white", color: "white", padding: "5px 10px", cursor: "pointer" }}>
+      <button onClick={() => setIsOpen(!isOpen)} style={{ background: "#1a1a1a", border: "1px solid white", color: "white", padding: "5px 10px", cursor: "pointer" }}>
         {isOpen ? "Show Less" : "Show More"}
       </button>
 
