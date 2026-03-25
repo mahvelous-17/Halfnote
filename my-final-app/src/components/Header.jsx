@@ -29,7 +29,7 @@ function Header() {
 
            
             <Link 
-              to={null} 
+              to="/log-mood"
               className="px-3 py-1 border border-white rounded hover:bg-white hover:text-black transition"
             >
               Log Mood
