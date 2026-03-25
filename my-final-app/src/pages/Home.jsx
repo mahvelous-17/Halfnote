@@ -5,7 +5,7 @@ function Home() {
 
   return (
     <div style={{ padding: "40px 20px", textAlign: "center", minHeight: "80vh" }}>
-      <h1 style={{ color: "white" }}>Halfnote Healing</h1>
+      <h2 style={{ color: "white" }}>Welcome to Halfnote Healing</h2>
       <p style={{ color: "white", fontStyle: "italic", marginBottom: "2rem" }}>
         "Where your problems are solved and guided through music"
       </p>

@@ -8,7 +8,7 @@ function Header() {
           
        
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold">Halfnote Healing</h1>
+            <h1 className="text-2xl font-bold">𝓗𝓪𝓵𝓯𝓷𝓸𝓽𝓮 𝓱𝓮𝓪𝓵𝓲𝓷𝓰</h1>
           </div>
 
           
