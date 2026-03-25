@@ -5,19 +5,26 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header style={{ padding: "5px", background: "#1a1a1a", color: "white" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <h1 style={{ margin: 0, fontSize: "1.5rem", color: "white" }}>Halfnote Healing</h1>
-        <button onClick={() => setIsOpen(!isOpen)} style={{ background: "none", border: "none", color: "white", fontSize: "2rem", cursor: "pointer" }}>
-          {isOpen ? "✖" : "☰"}
+    <header className="p-4 bg-zinc-900 text-white border-b border-zinc-700">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Halfnote Healing</h1>
+        <button 
+          onClick={() => setIsOpen(!isOpen)} 
+          className="text-3xl focus:outline-none"
+        >
+          {isOpen ? "✕" : "☰"}
         </button>
       </div>
 
       {isOpen && (
-        <nav style={{ marginTop: "10px" }}>
-          <ul style={{ listStyle: "none", padding: 0 }}>
-            <li><Link to="/" style={{ color: "white", textDecoration: "none" }} onClick={() => setIsOpen(false)}>Home</Link></li>
-            <li><Link to="/about" style={{ color: "white", textDecoration: "none" }} onClick={() => setIsOpen(false)}>About</Link></li>
+        <nav className="mt-4">
+          <ul className="space-y-2">
+            <li>
+              <Link to="/" className="text-lg hover:text-gray-400" onClick={() => setIsOpen(false)}>Home</Link>
+            </li>
+            <li>
+              <Link to="/about" className="text-lg hover:text-gray-400" onClick={() => setIsOpen(false)}>About</Link>
+            </li>
           </ul>
         </nav>
       )}
