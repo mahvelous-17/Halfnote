@@ -5,7 +5,7 @@ function MoodButton({ emoji, label, isSelected, onSelect }) {
       className={`p-4 border-2 rounded-xl transition-all ${
         isSelected 
           ? "border-white bg-white/20" 
-          : "border-white/10 bg-transparent"
+          : "border-white/10 bg-transparent hover:border-white/30"
       }`}
     >
       <div className="text-4xl">{emoji}</div>

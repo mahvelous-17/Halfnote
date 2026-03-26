@@ -1,6 +1,6 @@
 import { useState } from "react";
-import MoodButton from "./MoodButton";
-import StreakCounter from "../components/StreakCounter"; 
+import StreakCounter from "../components/StreakCounter";
+import MoodButton from "../components/MoodButton";
 
 function MoodEntry() {
   const [selectedMood, setSelectedMood] = useState("");
