@@ -1,6 +1,6 @@
 import { useState } from "react";
-import StreakCounter from "../components/StreakCounter";
-import MoodButton from "../components/MoodButton";
+import MoodButton from "./MoodButton";
+import StreakCounter from "../components/StreakCounter"; 
 
 function MoodEntry() {
   const [selectedMood, setSelectedMood] = useState("");
@@ -16,15 +16,15 @@ function MoodEntry() {
   };
 
   return (
-    <div className="pt-20 min-h-screen text-white text-center">
-      {/* Streak Component */}
+    <div className="pt-10 min-h-screen text-white text-center">
+      {/* The Streak Component */}
       <StreakCounter days={streak} />
 
       <div className="max-w-2xl mx-auto p-6">
         <h1 className="text-4xl font-bold mb-4">How's the music feeling today?</h1>
-        <p className="text-gray-200 mb-8 opacity-80">Select your starting mood</p>
+        <p className="opacity-70 mb-8 text-white/80">Select your starting mood</p>
 
-        {/*Mood Buttons */}
+        {/*  Mood Buttons */}
         <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
           <MoodButton emoji="😔" label="Low" isSelected={selectedMood === "😔"} onSelect={setSelectedMood} />
           <MoodButton emoji="😐" label="Meh" isSelected={selectedMood === "😐"} onSelect={setSelectedMood} />
@@ -33,9 +33,9 @@ function MoodEntry() {
           <MoodButton emoji="✨" label="Great" isSelected={selectedMood === "✨"} onSelect={setSelectedMood} />
         </div>
 
-        {/*Reflection Box */}
-        <div className="mt-10 p-6 border border-white/20 rounded-2xl text-left bg-[#1a1a1a]">
-          <h3 className="text-lg font-semibold mb-2 text-white">Reflect (Optional)</h3>
+        {/* Reflection Box */}
+        <div className="mt-10 p-6 border border-white/20 rounded-2xl text-left bg-black/10">
+          <h3 className="text-lg font-semibold mb-2">Reflect (Optional)</h3>
           <textarea
             className="w-full p-4 bg-transparent border border-white/10 rounded-lg text-white outline-none focus:border-white transition-all"
             placeholder="What's on your mind?"
@@ -46,7 +46,7 @@ function MoodEntry() {
 
         <button
           onClick={handleCheckMood}
-          className="mt-10 px-10 py-4 bg-[#1a1a1a] text-white border border-white font-bold text-xl rounded-lg hover:bg-white hover:text-black transition-all cursor-pointer"
+          className="mt-10 px-8 py-3 border-2 border-white font-bold rounded-lg hover:bg-white hover:text-[#338ad1] transition-all cursor-pointer"
         >
           Get Music Guided Activity
         </button>
