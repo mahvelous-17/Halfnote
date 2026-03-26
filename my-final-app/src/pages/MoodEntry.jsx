@@ -30,7 +30,7 @@ function MoodEntry() {
         <p className="text-white/50 mb-10 text-sm">Pick the mood that matches right now</p>
 
          {/* Mood Buttons  */}
-        <div className="flex flex-row flex-nowrap justify-between items-center w-full mb-12 gap-3 overflow-x-auto">
+        <div className='flex flex-row flex-nowrap justify-center gap-4 w-full mb-12'>
           {moods.map((m) => (
             <MoodButton
               key={m.label}
@@ -45,7 +45,7 @@ function MoodEntry() {
         {/* Reflection Box */}
         <div className="bg-white/5 border border-white/10 rounded-3xl p-6 transition-all hover:border-white/20">
           <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-3">
-            Reflect <span className="normal-case opacity-50">· optional</span>
+            Reflection (optional)
           </h3>
           <textarea
             rows={4}

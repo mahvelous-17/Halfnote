@@ -13,14 +13,18 @@ a {
   color: inherit;
 }
 
-html, body, #root {
+html, body {
   width: 100%;
-  min-height: 100vh;
   background-color: #080808;
   color: white;
   font-family: sans-serif;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
