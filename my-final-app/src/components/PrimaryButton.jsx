@@ -12,6 +12,6 @@ function PrimaryButton({ className = "", type = "button", onClick, children }) {
     </button>
   );
 }
-
+// reusable for same styling
 export default PrimaryButton;
 

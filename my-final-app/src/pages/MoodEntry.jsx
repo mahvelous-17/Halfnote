@@ -28,11 +28,12 @@ function MoodEntry() {
   return (
     <div className="w-full max-w-4xl mx-auto text-white flex flex-col items-center pt-24 px-6 bg-[#0c0c0c]">
       <div className="w-full flex justify-center">
+        <h1 className="text-4xl font-bold text-white pb-4 tracking-tight">Log Mood</h1>
         <StreakCounter days={streak} />
       </div>
 
       <div className="w-full max-w-2xl mx-auto flex flex-col items-center mt-6 text-center">
-        <h1 className="text-3xl font-bold mb-2 tracking-tight">How's the music feeling today?</h1>
+        <h1 className="text-3xl font-bold mb-2 tracking-tight">How are you feeling today?</h1>
         <p className="text-white/50 mb-10 text-sm">Pick the mood that matches right now</p>
 
         {/* Mood Buttons */}
@@ -51,7 +52,7 @@ function MoodEntry() {
         {/* Reflection Box */}
         <div 
           className="w-full mt-12 rounded-3xl"
-          style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', border: 'none', outline: 'none', boxShadow: 'none', padding: '24px' }}
+          style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', border: 'none', outline: 'none', boxShadow: 'none', padding: '24px',   borderRadius: '10px',  }}
         >
           <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-2">
             Reflection (optional)
