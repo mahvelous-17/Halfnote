@@ -8,7 +8,7 @@ function Header() {
           
     
           
-          <div className="flex space-x-4">
+          <div className="flex space-x-4 pt-8">
            
             <Link 
               to="/" 
