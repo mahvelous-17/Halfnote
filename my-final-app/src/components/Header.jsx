@@ -4,11 +4,11 @@ function Header() {
   return (
     <header className="bg-zinc-900 text-white border-b border-zinc-700 fixed w-full top-0 left-0 z-50 py-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         <div className="flex justify-between items-center h-20">
           
 
-          <div className="text-xl font-bold">Brand</div>
+          <div className="text-xl font-bold">Halnote Healing</div>
 
 
           <div className="flex space-x-4 pt-2">
