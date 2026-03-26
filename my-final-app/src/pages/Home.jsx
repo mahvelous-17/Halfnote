@@ -4,24 +4,30 @@ function Home() {
   const [started, setStarted] = useState(false);
 
   return (
-    <div style={{ padding: "40px 20px", textAlign: "center", minHeight: "80vh" }}>
-      <h2 style={{ color: "white" }}>Welcome to Halfnote Healing</h2>
-      <p style={{ color: "white", fontStyle: "italic", marginBottom: "2rem" }}>
+    <div style={{ padding: "80px 20px 40px", textAlign: "center", minHeight: "80vh" }}>
+      <h2 style={{ color: "white", fontSize: "2rem", marginBottom: "0.5rem" }}>
+        Welcome to Halfnote Healing
+      </h2>
+      <p style={{ color: "white", fontStyle: "italic", marginBottom: "2rem", opacity: 0.8 }}>
         "Where your problems are solved and guided through music"
       </p>
 
       <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
-        <pre className="text-xs text-gray-300 overflow-auto "
+        <pre 
+          className="overflow-auto"
           style={{
-            color: "white",
+            background: "linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            display: "inline-block",
+            
             fontSize: "15px",
             lineHeight: "17px",
             textAlign: "center",
             whiteSpace: "pre",
             margin: "0 auto",
-            background: "none",
             border: "none",
-            
+            fontWeight: "bold"
           }}
         >
 {`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣠⣤⣤⣤⣶⣶⣾⣿⡇⠀
@@ -54,23 +60,30 @@ function Home() {
 
       <button
         style={{
-          backgroundColor: "#1a1a1a",
-          color: "white",
+          backgroundColor: "#f4f4f5",
+          color: "#18181b",
           padding: "15px 30px",
-          fontSize: "1.2rem",
+          fontSize: "1.1rem",
+          fontWeight: "600",
           border: "none",
           borderRadius: "8px",
-          marginTop: "30px",
-          cursor: "pointer"
+          marginTop: "40px",
+          cursor: "pointer",
+          transition: "transform 0.2s"
         }}
-        onClick={() => {}} 
+        onClick={() => setStarted(true)} 
       >
         Start Your Daily Activity
       </button>
 
       {started && (
-        <p style={{ marginTop: "20px", fontWeight: "bold", color: "white" }}>
-          Let’s get started on today’s musical journey!
+        <p style={{ 
+          marginTop: "24px", 
+          fontWeight: "500", 
+          color: "#10b981",
+          fontSize: "1.1rem" 
+        }}>
+          ✨ Let’s get started on today’s musical journey!
         </p>
       )}
     </div>

@@ -1,24 +1,11 @@
-* 
-
-html, body, #root {
+*, html, body, #root {
   margin: 0;
   padding: 0;
-  width: 100%;
-  min-height: 100vh;
-  background-color: #338ad1; 
-  color: white; 
-  font-family: sans-serif;
-  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
-:root {
-  --border: rgba(255, 255, 255, 0.3);
-  --accent: white;
-  --accent-bg: rgba(255, 255, 255, 0.2);
-  --accent-border: white;
-  --social-bg: rgba(255, 255, 255, 0.1);
-  --text-h: white;
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+textarea {
+  font-family: inherit;
 }
 
 a {
@@ -28,9 +15,9 @@ a {
 
 html, body, #root {
   width: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #4a90e2;
+  min-height: 100vh;
+  background-color: #121213;
+  color: white;
   font-family: sans-serif;
   overflow-x: hidden;
 }
