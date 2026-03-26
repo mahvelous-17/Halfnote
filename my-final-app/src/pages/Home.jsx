@@ -16,11 +16,11 @@ function Home() {
         <pre 
           className="overflow-auto"
           style={{
-            background: "linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff)",
+            background: "linear-gradient(to right, #ff0000, #00c3ff, #ff0080)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             display: "inline-block",
-            
+            color: "transparent", 
             fontSize: "15px",
             lineHeight: "17px",
             textAlign: "center",

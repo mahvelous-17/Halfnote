@@ -11,36 +11,36 @@ function Header() {
           <div className="flex items-center space-x-2 pt-2">
             <Link 
               to="/" 
-              className="text-red-500 font-medium hover:underline transition"
+              className="!text-red-500 font-medium hover:underline transition"
             >
               Home
             </Link>
             
-            <span className="text-zinc-600">|</span>
+            <span className="!text-gray-600">|</span>
 
 
             <Link 
               to="/about" 
-              className="text-cyan-400 font-medium hover:underline transition"
+              className="!text-cyan-400 font-medium hover:underline transition"
             >
               About Us
             </Link>
 
-            <span className="text-zinc-600">|</span>
+            <span className="!text-zinc-600">|</span>
 
             <Link 
               to="/log-mood"
-              className="text-green-500 font-medium hover:underline transition"
+              className="!text-green-500 font-medium hover:underline transition"
             >
               Log Mood
             </Link>
 
-            <span className="text-zinc-600">|</span>
+            <span className="!text-gray-600">|</span>
 
 
             <Link 
               to="/profile" 
-              className="text-yellow-400 font-medium hover:underline transition"
+              className="!text-yellow-400 font-medium hover:underline transition"
             >
               Profile
             </Link>
