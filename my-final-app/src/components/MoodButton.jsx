@@ -7,7 +7,7 @@ function MoodButton({ emoji, label, isSelected, onSelect }) {
         border: "none",
         cursor: "pointer",
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "column", 
         alignItems: "center",
         outline: "none",
         padding: "10px",
@@ -23,10 +23,13 @@ function MoodButton({ emoji, label, isSelected, onSelect }) {
         fontSize: "12px", 
         color: "white", 
         fontWeight: isSelected ? "bold" : "normal",
-        letterSpacing: "0.05em"
+        letterSpacing: "0.05em",
+        margin: 0
       }}>
         {label}
       </p>
     </button>
   );
 }
+
+export default MoodButton;
