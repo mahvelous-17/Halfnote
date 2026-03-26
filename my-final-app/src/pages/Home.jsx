@@ -4,7 +4,7 @@ function Home() {
   const [started, setStarted] = useState(false);
 
   return (
-    <div className="min-h-[80vh] flex flex-col items-center justify-center text-center px-5 pt-32 pb-10">
+    <div className="w-full max-w-4xl mx-auto min-h-[80vh] flex flex-col items-center justify-center text-center px-6 pt-32 pb-10">
       
       <h2 className="text-white text-4xl font-bold mb-2">
         Welcome to Halfnote Healing

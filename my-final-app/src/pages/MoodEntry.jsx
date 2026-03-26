@@ -21,8 +21,10 @@ function MoodEntry() {
   };
 
   return (
-    <div className="w-full text-white flex flex-col items-center pt-24 px-6 bg-[#0c0c0c]">
-      <StreakCounter days={streak} />
+    <div className="w-full max-w-4xl mx-auto text-white flex flex-col items-center pt-24 px-6 bg-[#0c0c0c]">
+      <div className="w-full flex justify-center">
+        <StreakCounter days={streak} />
+      </div>
 
 
       <div className="max-w-md w-full mx-auto flex flex-col items-center mt-6 text-center">
@@ -30,7 +32,7 @@ function MoodEntry() {
         <p className="text-white/50 mb-10 text-sm">Pick the mood that matches right now</p>
 
          {/* Mood Buttons  */}
-        <div className='flex flex-row flex-nowrap justify-center gap-4 w-full mb-12'>
+        <div className='flex flex-row flex-nowrap justify-center gap-6 w-full'>
           {moods.map((m) => (
             <MoodButton
               key={m.label}

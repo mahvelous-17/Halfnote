@@ -58,10 +58,12 @@ body {
 }
 
 #root {
-  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
   min-height: 100vh;
+  text-align: center;
 }
 
 h1,

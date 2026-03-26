@@ -5,9 +5,9 @@ import Mission from "../components/Mission";
 
 function About() {
   return (
-    <div style={{ width: "100%", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", padding: "80px 20px" }}>
+    <div className="w-full max-w-4xl mx-auto flex flex-col items-center pt-24 pb-10 px-6">
       
-      <h1 style={{ color: "white", marginBottom: "40px" }}>About Our Team</h1>
+      <h1 className="text-white mb-10">About Our Team</h1>
 
 
       <div style={{ 
