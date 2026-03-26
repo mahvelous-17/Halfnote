@@ -10,9 +10,9 @@ function Header() {
   };
 
   return (
-    <header className="bg-zinc-900 border-b border-zinc-700 fixed w-full top-0 left-0 z-50 py-2">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+    <header className="bg-zinc-900 border-b border-zinc-700 sticky top-0 z-50 w-full">
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20 gap-4">
           
           <div className="text-xl font-bold" style={{
             background: "linear-gradient(to right, #6200ff, #00e1ff, #ff0000)",
@@ -24,13 +24,12 @@ function Header() {
             lineHeight: "17px",
             textAlign: "center",
             whiteSpace: "pre",
-            margin: "0 auto",
             border: "none",
             fontWeight: "bold"}}>
             Halfnote Healing
           </div>
 
-          <div className="flex items-center pt-2">
+          <nav className="flex items-center pt-2 whitespace-nowrap">
             <Link to="/" style={styles.red} className="hover:underline transition">
               Home
             </Link>
@@ -52,7 +51,7 @@ function Header() {
             <Link to="/profile" style={styles.yellow} className="hover:underline transition">
               Profile
             </Link>
-          </div>
+          </nav>
 
         </div>
       </div>
