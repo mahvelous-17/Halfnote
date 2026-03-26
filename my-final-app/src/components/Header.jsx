@@ -6,7 +6,7 @@ function Header() {
     cyan: { color: "#22d3ee", fontWeight: "500" },
     green: { color: "#22c55e", fontWeight: "500" },
     yellow: { color: "#eab308", fontWeight: "500" },
-    divider: { color: "#52525b", margin: "0 8px" }
+    divider: { color: "#6d6d6d", margin: "0 8px" }
   };
 
   return (
@@ -30,26 +30,23 @@ function Header() {
           Halfnote Healing
         </div>
 
-        <nav className="flex items-center pt-2 whitespace-nowrap">
-          <Link to="/" style={styles.red} className="hover:underline transition">
+        <nav className="flex items-center pt-2 whitespace-nowrap gap-6">
+          <Link to="/" style={styles.red} className="hover:underline transition px-4 font-medium">
             Home
           </Link>
-
           <span style={styles.divider}>|</span>
 
-          <Link to="/about" style={styles.cyan} className="hover:underline transition">
+          <Link to="/about" style={styles.cyan} className="hover:underline transition px-4 font-medium">
             About Us
           </Link>
-
           <span style={styles.divider}>|</span>
 
-          <Link to="/log-mood" style={styles.green} className="hover:underline transition">
+          <Link to="/log-mood" style={styles.green} className="hover:underline transition px-4 font-medium">
             Log Mood
           </Link>
-
           <span style={styles.divider}>|</span>
 
-          <Link to="/profile" style={styles.yellow} className="hover:underline transition">
+          <Link to="/profile" style={styles.yellow} className="hover:underline transition px-4 font-medium">
             Profile
           </Link>
         </nav>

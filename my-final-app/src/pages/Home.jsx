@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PrimaryButton from "../components/PrimaryButton";
 
 function Home() {
   const [started, setStarted] = useState(false);
@@ -30,6 +31,7 @@ function Home() {
             margin: "0 auto",
             border: "none",
             fontWeight: "bold"
+            
           }}
         >
 {`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣠⣤⣤⣤⣶⣶⣾⣿⡇⠀
@@ -58,21 +60,31 @@ function Home() {
 ⠀⠀⠀⠀⠀⣿⣿⢀⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣸⣿⣿⡇⠀⠀
 ⠀⠀⠀⠀⠀⠙⠛⠀⠙⠋⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠋⠈⠛⠋⠀`}
         </pre>
-      </div>
+      </div >
 
 {}
-      <button
-        onClick={() => setStarted(true)} 
-        className="mt-10 px-10 py-4 bg-zinc-100 text-zinc-900 font-bold rounded-full hover:scale-105 transition-transform duration-300 uppercase tracking-widest text-xs"
-      >
+      <PrimaryButton className="mt-20 "
+       onClick={() => setStarted(true)}>
         Start Your Daily Activity
-      </button>
+      </PrimaryButton>
 
       {started && (
-        <p className="mt-6 text-green-400 font-medium animate-pulse">
-          ✨ Let’s get started on today’s musical journey!
-        </p>
-      )}
+  <div style={{ 
+    marginTop: '1rem', 
+    padding: '1rem', 
+    outline: 'none',
+    boxShadow: 'none'
+  }}>
+    <p style={{ 
+      color: '#4ade80', 
+      fontWeight: '700', 
+      margin: 0, 
+      outline: 'none' 
+    }}>
+      ✨ Let’s get started on today’s musical journey!
+    </p>
+  </div>
+  )}
     </div>
   );
 }

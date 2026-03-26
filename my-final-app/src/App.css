@@ -18,8 +18,8 @@ html, body {
   background-color: #080808;
   color: white;
   font-family: sans-serif;
-  overflow-x: hidden;
-  overflow-y: auto;
+  margin: 0;
+  padding: 0;
 }
 
 #root {
