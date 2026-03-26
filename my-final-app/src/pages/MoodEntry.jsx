@@ -30,6 +30,9 @@ function MoodEntry() {
         <p className="text-white/50 mb-10 text-sm">Pick the mood that matches right now</p>
 
          {/* Mood Buttons  */}
+         <div className="bg-red-500 text-9xl font-black rotate-12 p-20 fixed top-0 left-0 z-[9999]">
+  TAILWIND WORKS
+</div>
         <div className="flex flex-row justify-between items-center mb-12 w-full">
           {moods.map((m) => (
             <MoodButton
