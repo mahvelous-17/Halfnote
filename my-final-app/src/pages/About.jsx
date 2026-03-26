@@ -1,6 +1,7 @@
 import Card from "../components/Card"; 
 import AndrewImg from "../assets/Andrew.png";
 import RyanImg from "../assets/Ryan.png";
+import Mission from "../components/Mission";
 
 function About() {
   return (
@@ -24,6 +25,12 @@ function About() {
           img={RyanImg}
           emoji="📋"
         />
+
+       <Mission
+          textHeader="Our Mission"
+          myMission="To create a place where people may access music-guided therapy that helps users improve mental health"
+        />
+
       </div>
     </div>
   );
