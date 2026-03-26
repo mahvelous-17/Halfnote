@@ -10,16 +10,18 @@ import "./App.css";
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+      <div className="flex flex-col items-center w-full min-h-screen">
+        <Header />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/log-mood" element={<MoodEntry />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/log-mood" element={<MoodEntry />} />
+        </Routes>
 
-      <Footer />
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }

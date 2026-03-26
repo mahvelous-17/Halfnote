@@ -25,12 +25,12 @@ function MoodEntry() {
       <StreakCounter days={streak} />
 
 
-      <div className="w-full max-w-md mt-6">
+      <div className="max-w-md w-full mx-auto flex flex-col items-center mt-6">
         <h1 className="text-3xl font-bold mb-2 tracking-tight">How's the music feeling today?</h1>
         <p className="text-white/50 mb-10 text-sm">Pick the mood that matches right now</p>
 
          {/* Mood Buttons  */}
-        <div className="flex flex-row justify-between items-center mb-12 w-full">
+        <div className="flex flex-row justify-between w-full mb-12">
           {moods.map((m) => (
             <MoodButton
               key={m.label}
