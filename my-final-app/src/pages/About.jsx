@@ -48,14 +48,14 @@ function About() {
             whiteSpace: "pre",
             margin: "0 auto",
             border: "none",
-            fontWeight: "bold"
+            fontWeight: "bold",
              width: "100%", 
              maxWidth: "800px" }}>
         <Mission
           textHeader="Our Mission"
           myMission="To create a place where people may access music-guided therapy that helps users improve mental health"
         />
-        
+
       </div>
 
     </div>
