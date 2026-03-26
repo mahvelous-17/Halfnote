@@ -5,10 +5,20 @@ import Mission from "../components/Mission";
 
 function About() {
   return (
-    <div style={{ width: "100%", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", padding: "20px" }}>
-      <h1 style={{ color: "white" }}>About Our Team</h1>
+    <div style={{ width: "100%", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", padding: "80px 20px" }}>
+      
+      <h1 style={{ color: "white", marginBottom: "40px" }}>About Our Team</h1>
 
-      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center", gap: "40px", width: "100%" }}>
+
+      <div style={{ 
+        display: "flex", 
+        flexDirection: "row", 
+        flexWrap: "wrap", 
+        justifyContent: "center", 
+        gap: "40px", 
+        width: "100%",
+        marginBottom: "60px" 
+      }}>
         <Card
           name="Andrew"
           title="Main Coder"
@@ -25,13 +35,29 @@ function About() {
           img={RyanImg}
           emoji="📋"
         />
+      </div>
 
-       <Mission
+      <div style={{  background: "linear-gradient(to right, #ff0000, #00c3ff, #ff0080)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            display: "inline-block",
+            color: "transparent", 
+            fontSize: "15px",
+            lineHeight: "17px",
+            textAlign: "center",
+            whiteSpace: "pre",
+            margin: "0 auto",
+            border: "none",
+            fontWeight: "bold"
+             width: "100%", 
+             maxWidth: "800px" }}>
+        <Mission
           textHeader="Our Mission"
           myMission="To create a place where people may access music-guided therapy that helps users improve mental health"
         />
-
+        
       </div>
+
     </div>
   );
 }

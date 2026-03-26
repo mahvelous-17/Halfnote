@@ -15,7 +15,7 @@ function Header() {
         <div className="flex justify-between items-center h-20">
           
           <div className="text-xl font-bold" style={{
-            background: "linear-gradient(to right, #6200ff, #ff0000, #ffe600)",
+            background: "linear-gradient(to right, #6200ff, #00e1ff, #ff0000)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             display: "inline-block",

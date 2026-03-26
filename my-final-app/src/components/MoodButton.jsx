@@ -2,18 +2,31 @@ function MoodButton({ emoji, label, isSelected, onSelect }) {
   return (
     <button
       onClick={() => onSelect(emoji)}
-      className={`p-4 border-2 rounded-xl transition-all ${
-        isSelected 
-          ? "border-white bg-white/20" 
-          : "border-white/10 bg-transparent hover:border-white/30"
-      }`}
+      style={{
+        background: "none",
+        border: "none",
+        cursor: "pointer",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        outline: "none",
+        padding: "10px",
+        transform: isSelected ? "scale(1.25)" : "scale(1)",
+        opacity: isSelected ? 1 : 0.4,
+        transition: "all 0.3s ease"
+      }}
     >
-      <div className="text-4xl">{emoji}</div>
-      <p className={`text-sm mt-2 ${isSelected ? "text-white" : "text-white/60"}`}>
+      <span style={{ fontSize: "40px", marginBottom: "8px" }}>
+        {emoji}
+      </span>
+      <p style={{ 
+        fontSize: "12px", 
+        color: "white", 
+        fontWeight: isSelected ? "bold" : "normal",
+        letterSpacing: "0.05em"
+      }}>
         {label}
       </p>
     </button>
   );
 }
-
-export default MoodButton;

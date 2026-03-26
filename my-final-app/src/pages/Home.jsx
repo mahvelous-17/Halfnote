@@ -4,11 +4,13 @@ function Home() {
   const [started, setStarted] = useState(false);
 
   return (
-    <div style={{ padding: "80px 20px 40px", textAlign: "center", minHeight: "80vh" }}>
-      <h2 style={{ color: "white", fontSize: "2rem", marginBottom: "0.5rem" }}>
+    <div className="min-h-[80vh] flex flex-col items-center justify-center text-center px-5 pt-32 pb-10">
+      
+      <h2 className="text-white text-4xl font-bold mb-2">
         Welcome to Halfnote Healing
       </h2>
-      <p style={{ color: "white", fontStyle: "italic", marginBottom: "2rem", opacity: 0.8 }}>
+      
+      <p className="text-white/60 italic mb-10 text-lg">
         "Where your problems are solved and guided through music"
       </p>
 
@@ -58,36 +60,19 @@ function Home() {
         </pre>
       </div>
 
+{}
       <button
-        style={{
-          backgroundColor: "#f4f4f5",
-          color: "#18181b",
-          padding: "15px 30px",
-          fontSize: "1.1rem",
-          fontWeight: "600",
-          border: "none",
-          borderRadius: "8px",
-          marginTop: "40px",
-          cursor: "pointer",
-          transition: "transform 0.2s"
-        }}
         onClick={() => setStarted(true)} 
+        className="mt-10 px-10 py-4 bg-zinc-100 text-zinc-900 font-bold rounded-full hover:scale-105 transition-transform duration-300 uppercase tracking-widest text-xs"
       >
         Start Your Daily Activity
       </button>
 
       {started && (
-        <p style={{ 
-          marginTop: "24px", 
-          fontWeight: "500", 
-          color: "#10b981",
-          fontSize: "1.1rem" 
-        }}>
+        <p className="mt-6 text-green-400 font-medium animate-pulse">
           ✨ Let’s get started on today’s musical journey!
         </p>
       )}
     </div>
   );
 }
-
-export default Home;
