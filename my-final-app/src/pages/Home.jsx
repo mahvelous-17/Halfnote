@@ -1,8 +1,8 @@
-import { useState } from "react";
 import PrimaryButton from "../components/PrimaryButton";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const [started, setStarted] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="w-full max-w-4xl mx-auto min-h-[80vh] flex flex-col items-center justify-center text-center px-6 pt-32 pb-10">
@@ -64,28 +64,12 @@ function Home() {
 
 {}
       <PrimaryButton className="mt-20 "
-       onClick={() => setStarted(true)}>
+       onClick={() => navigate("/log-mood")} >
         Start Your Daily Activity
       </PrimaryButton>
 
-      {started && (
-  <div style={{ 
-    marginTop: '1rem', 
-    padding: '1rem', 
-    outline: 'none',
-    boxShadow: 'none'
-  }}>
-    <p style={{ 
-      color: '#4ade80', 
-      fontWeight: '700', 
-      margin: 0, 
-      outline: 'none' 
-    }}>
-      ✨ Let’s get started on today’s musical journey!
-    </p>
-  </div>
-  )}
-    </div>
+     </div>
+
   );
 }
 

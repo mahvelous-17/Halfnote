@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import MoodButton from "../components/MoodButton"; 
 import StreakCounter from "../components/StreakCounter";
 import PrimaryButton from "../components/PrimaryButton";
@@ -9,11 +10,13 @@ function MoodEntry() {
   const [streak] = useState(7);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const navigate = useNavigate();
+
   const moods = [
     { emoji: "😔", label: "Low" },
     { emoji: "😐", label: "Meh" },
-    { emoji: "🙂", label: "Steady" },
-    { emoji: "😊", label: "Good" },
+    { emoji: "🙂", label: "Happy" },
+    { emoji: "😊", label: "Amazing" },
     { emoji: "✨", label: "Great" }
   ];
 
@@ -22,13 +25,14 @@ function MoodEntry() {
     setIsSubmitted(true);
     setTimeout(() => {
       console.log("Navigating...");
+      navigate("/music-act");
     }, 1500);
   };
 
   return (
     <div className="w-full max-w-4xl mx-auto text-white flex flex-col items-center pt-24 px-6 bg-[#0c0c0c]">
-      <div className="w-full flex justify-center">
-        <h1 className="text-4xl font-bold text-white pb-4 tracking-tight">Log Mood</h1>
+      <div className="w-full flex items-center justify-center gap-1 pb-6">
+        <h1 className="text-4xl font-bold text-white tracking-tight">Log Mood</h1>
         <StreakCounter days={streak} />
       </div>
 
@@ -55,7 +59,7 @@ function MoodEntry() {
           style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', border: 'none', outline: 'none', boxShadow: 'none', padding: '24px',   borderRadius: '10px',  }}
         >
           <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-2">
-            Reflection (optional)
+            Reflection (Reccomended)
           </h3>
           <textarea
             rows={4}
