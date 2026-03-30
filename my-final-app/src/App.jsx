@@ -24,7 +24,7 @@ function App() {
             <Route path="/log-mood" element={<MoodEntry />} />
             <Route path="/reflect" element={<Reflect />} />
            <Route path="/music-act" element={<MusicAct />} />
-           <Route path="/mood" element={<Moodhis />} />
+           <Route path="/mood" element={<MoodHis />} />
           </Routes>
         </main>
 

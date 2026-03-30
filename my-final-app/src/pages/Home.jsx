@@ -21,7 +21,7 @@ function Home() {
           100% { background-position: 200% center; }
         }
         .animated-gradient {
-          background: linear-gradient(90deg, #ff0000, #00c3ff, #ffffff, #d400ff);
+          background: linear-gradient(90deg, #00c3ff, #ffffff, #d400ff);
           background-size: 200% 200%;
           animation: gradientShift 3s linear infinite;
           -webkit-background-clip: text;

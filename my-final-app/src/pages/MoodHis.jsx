@@ -1,4 +1,4 @@
-function MusicHis() {
+function MoodHis() {
 
   return (
     <div className="w-full max-w-4xl mx-auto text-white flex flex-col items-center pt-24 px-6 min-h-screen">
