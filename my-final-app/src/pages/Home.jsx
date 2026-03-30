@@ -16,23 +16,42 @@ function Home() {
       </p>
 
       <style>{`
-        @keyframes gradientShift {
-          0% { background-position: 0% center; }
-          100% { background-position: 200% center; }
+        @property --gradient-start {
+          syntax: "<color>";
+          initial-value: #00c3ff;
+          inherits: false;
         }
-        .animated-gradient {
-          background: linear-gradient(90deg, #00c3ff, #ffffff, #d400ff);
-          background-size: 200% 200%;
-          animation: gradientShift 3s linear infinite;
+        @property --gradient-end {
+          syntax: "<color>";
+          initial-value: #d400ff;
+          inherits: false;
+        }
+        .houdini-gradient {
+          background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+          animation: houdini-colors 4s ease infinite;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
+        }
+        @keyframes houdini-colors {
+          0%, 100% {
+            --gradient-start: #00c3ff;
+            --gradient-end: #d400ff;
+          }
+          33% {
+            --gradient-start: #ffffff;
+            --gradient-end: #00c3ff;
+          }
+          66% {
+            --gradient-start: #279c39;
+            --gradient-end: #00c3ff;
+          }
         }
       `}</style>
 
       <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
         <pre 
-          className="overflow-auto animated-gradient"
+          className="overflow-auto houdini-gradient"
           style={{
             display: "inline-block",
             fontSize: "15px",
