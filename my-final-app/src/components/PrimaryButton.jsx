@@ -4,7 +4,7 @@ function PrimaryButton({ className = "", type = "button", onClick, children }) {
       type={type}
       onClick={onClick}
       className={[
-        "bg-white text-black hover:bg-zinc-200 transition-all duration-300 rounded-full py-3 px-8 font-semibold text-sm uppercase tracking-wider shadow-lg hover:scale-[1.02] active:scale-[0.98] min-w-[50px]",
+        "bg-white text-black hover:bg-zinc-200 transition-all duration-300 rounded-full py-3 px-8 font-semibold text-sm uppercase tracking-wider shadow-lg hover:scale-[1.02] active:scale-[0.98] min-w-[50px] borderRadius: '10px', ",
         className,
       ].join(" ")}
     >

@@ -15,15 +15,26 @@ function Home() {
         "Where your problems are solved and guided through music"
       </p>
 
+      <style>{`
+        @keyframes gradientShift {
+          0% { background-position: 0% center; }
+          100% { background-position: 200% center; }
+        }
+        .animated-gradient {
+          background: linear-gradient(90deg, #ff0000, #00c3ff, #ffffff, #d400ff);
+          background-size: 200% 200%;
+          animation: gradientShift 3s linear infinite;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+      `}</style>
+
       <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
         <pre 
-          className="overflow-auto"
+          className="overflow-auto animated-gradient"
           style={{
-            background: "linear-gradient(to right, #ff0000, #00c3ff, #ff0080)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
             display: "inline-block",
-            color: "transparent", 
             fontSize: "15px",
             lineHeight: "17px",
             textAlign: "center",
@@ -31,7 +42,6 @@ function Home() {
             margin: "0 auto",
             border: "none",
             fontWeight: "bold"
-            
           }}
         >
 {`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣠⣤⣤⣤⣶⣶⣾⣿⡇⠀
@@ -60,16 +70,14 @@ function Home() {
 ⠀⠀⠀⠀⠀⣿⣿⢀⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣸⣿⣿⡇⠀⠀
 ⠀⠀⠀⠀⠀⠙⠛⠀⠙⠋⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠋⠈⠛⠋⠀`}
         </pre>
-      </div >
+      </div>
 
-{}
-      <PrimaryButton className="mt-20 "
+      <PrimaryButton className="mt-20"
        onClick={() => navigate("/log-mood")} >
         Start Your Daily Activity
       </PrimaryButton>
 
-     </div>
-
+    </div>
   );
 }
 

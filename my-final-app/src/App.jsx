@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import MoodEntry from "./pages/MoodEntry";
 import Reflect from "./pages/Reflect";
 import MusicAct from "./pages/MusicAct";
+import MoodHis from "./pages/MoodHis";
 import "./App.css";
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/log-mood" element={<MoodEntry />} />
             <Route path="/reflect" element={<Reflect />} />
            <Route path="/music-act" element={<MusicAct />} />
+           <Route path="/mood" element={<Moodhis />} />
           </Routes>
         </main>
 
