@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import MoodButton from "../components/MoodButton"; 
 import StreakCounter from "../components/StreakCounter";
 import PrimaryButton from "../components/PrimaryButton";
+import Loadingbar from "../components/Loadingbar";
 
 function MoodEntry() {
   const [selectedMood, setSelectedMood] = useState("");
@@ -24,7 +25,6 @@ function MoodEntry() {
     if (!selectedMood) return alert("Please select a mood emoji first!");
     setIsSubmitted(true);
     setTimeout(() => {
-      console.log("Navigating...");
       navigate("/music-act");
     }, 1500);
   };
@@ -59,7 +59,7 @@ function MoodEntry() {
           style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', border: 'none', outline: 'none', boxShadow: 'none', padding: '24px',   borderRadius: '10px',  }}
         >
           <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-2">
-            Reflection (Reccomended)
+            Reflection (Recomended)
           </h3>
           <textarea
             rows={4}
@@ -67,7 +67,8 @@ function MoodEntry() {
             style={{ 
               outline: 'none', 
               boxShadow: 'none', 
-              border: 'none'
+              border: 'none',
+              resize: 'none'
             }}
             placeholder="What's on your mind?"
             value={note}
@@ -75,18 +76,17 @@ function MoodEntry() {
           />
         </div>
 
-        <PrimaryButton className="mt-10" onClick={handleCheckMood}>
-          Get Music Guided Activity
-        </PrimaryButton>
 
         {/* Success message */}
-        {isSubmitted && (
-          <div style={{ marginTop: '1.5rem', padding: '1rem', outline: 'none' }}>
-            <p style={{ color: '#4ade80', fontWeight: '700', margin: 0, outline: 'none' }}>
-              Mood logged successfully! Loading your activity 𓃰
-            </p>
-          </div>
-        )}
+     <div className="mt-20 w-full max-w-md h-24 flex items-center justify-center">
+          {!isSubmitted ? (
+            <PrimaryButton onClick={handleCheckMood}>
+              Get Music Guided Activity
+            </PrimaryButton>
+          ) : (
+            <Loadingbar message="Mood logged successfully! Loading your activity" />
+          )}
+        </div>
       </div>
     </div>
   );

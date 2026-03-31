@@ -1,8 +1,19 @@
 import PrimaryButton from "../components/PrimaryButton";
 import { useNavigate } from "react-router-dom";
+import Loadingbar from "../components/Loadingbar";
+import HoudiniTxt from "../components/HoudiniTxt";
+import { useState } from "react";
 
 function Home() {
+const [isSubmitted, setIsSubmitted] = useState(false);
   const navigate = useNavigate();
+
+  const handleStart = () => {
+    setIsSubmitted(true);
+    setTimeout(() => {
+      navigate("/log-mood");
+    }, 1500);
+  };
 
   return (
     <div className="w-full max-w-4xl mx-auto min-h-[80vh] flex flex-col items-center justify-center text-center px-6 pt-32 pb-10">
@@ -15,42 +26,9 @@ function Home() {
         "Where your problems are solved and guided through music"
       </p>
 
-      <style>{`
-        @property --gradient-start {
-          syntax: "<color>";
-          initial-value: #00c3ff;
-          inherits: false;
-        }
-        @property --gradient-end {
-          syntax: "<color>";
-          initial-value: #d400ff;
-          inherits: false;
-        }
-        .houdini-gradient {
-          background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-          animation: houdini-colors 4s ease infinite;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        @keyframes houdini-colors {
-          0%, 100% {
-            --gradient-start: #00c3ff;
-            --gradient-end: #d400ff;
-          }
-          33% {
-            --gradient-start: #ffffff;
-            --gradient-end: #00c3ff;
-          }
-          66% {
-            --gradient-start: #279c39;
-            --gradient-end: #00c3ff;
-          }
-        }
-      `}</style>
-
-      <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
-        <pre 
+      
+      <HoudiniTxt className="flex justify-center mt-5">
+          <pre 
           className="overflow-auto houdini-gradient"
           style={{
             display: "inline-block",
@@ -89,13 +67,16 @@ function Home() {
 ⠀⠀⠀⠀⠀⣿⣿⢀⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣸⣿⣿⡇⠀⠀
 ⠀⠀⠀⠀⠀⠙⠛⠀⠙⠋⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠋⠈⠛⠋⠀`}
         </pre>
+      </HoudiniTxt>
+      <div className="mt-20 w-full max-w-md h-24 flex items-center justify-center">
+        {!isSubmitted ? (
+          <PrimaryButton onClick={handleStart}>
+            Start Your Daily Activity
+          </PrimaryButton>
+        ) : (
+          <Loadingbar message="Starting Your healing journey" />
+        )}
       </div>
-
-      <PrimaryButton className="mt-20"
-       onClick={() => navigate("/log-mood")} >
-        Start Your Daily Activity
-      </PrimaryButton>
-
     </div>
   );
 }

@@ -1,10 +1,11 @@
 import Card from "../components/Card"; 
 import AndrewImg from "../assets/Andrew.png";
 import RyanImg from "../assets/Ryan.png";
+import Mission from "../components/Mission";
 
 function About() {
   return (
-    <div className="w-full max-w-4xl mx-auto flex flex-col items-center pt-24 pb-10 px-6">
+    <div className="w-full max-w-4xl mx-auto flex flex-col items-center ">
       
       <h1 className="text-white mb-10 text-3xl font-bold">About Our Team</h1>
 
@@ -15,7 +16,7 @@ function About() {
         justifyContent: "center", 
         gap: "40px", 
         width: "100%",
-        marginBottom: "60px" 
+        marginBottom: "20px" 
       }}>
         <Card
           name="Andrew"
@@ -35,22 +36,17 @@ function About() {
         />
       </div>
 
-      <div style={{
-        background: "linear-gradient(to right, #ff0000, #00c3ff, #ff0080)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        backgroundClip: "text",
-        textAlign: "center",
-        maxWidth: "600px",
-        margin: "0 auto"
-      }}>
-        <h2 style={{ fontSize: "28px", fontWeight: "bold", marginBottom: "10px" }}>
-          Our Mission
-        </h2>
-        <p style={{ fontSize: "18px", fontWeight: "bold", lineHeight: "1.4" }}>
-          To create a place where people may access music-guided therapy 
-          that helps users improve mental health
-        </p>
+      <div className="w-full max-w-[600px] mx-auto mt-0 pt-0">
+        <Mission 
+          textHeader="Our Mission" 
+         myMission={
+            <>
+              To create a place where people may access music-guided therapy 
+              <br /> 
+              that helps users improve mental health
+            </>
+            }
+        />
       </div>
 
     </div>
