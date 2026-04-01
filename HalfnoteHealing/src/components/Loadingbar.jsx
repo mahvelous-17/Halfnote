@@ -9,9 +9,9 @@ const Loadingbar = ({ message = "Loading...", className = "" }) => {
           background: linear-gradient(
             90deg,
             #4facfe 0%,
-            #00f2fe 25%,
+            #e900fe 25%,
             #4facfe 50%,
-            #00f2fe 75%,
+            #e900fe 75%,
             #4facfe 100%
           );
           background-size: 200% 100%;

@@ -14,23 +14,23 @@ const HoudiniTxt = ({ children, className = "" }) => {
         }
         .houdini-gradient {
           background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-          animation: houdini-colors 4s ease infinite;
+          animation: houdini-colors 3s ease infinite;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
         @keyframes houdini-colors {
           0%, 100% {
-            --gradient-start: #00c3ff;
+            --gradient-start: #67d2f3;
             --gradient-end: #d400ff;
           }
           33% {
-            --gradient-start: #ffffff;
-            --gradient-end: #00c3ff;
+            --gradient-start: rgb(221, 0, 255);
+            --gradient-end: #00ffc3;
           }
           66% {
-            --gradient-start: #279c39;
-            --gradient-end: #00c3ff;
+            --gradient-start: #7de1ff;
+            --gradient-end: #d400ff;
           }
         }
       `}</style>
