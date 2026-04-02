@@ -12,7 +12,8 @@ import "./App.css";
 function App() {
   return (
     <>
-    <BrowserRouter>
+    <BrowserRouter basename="/my-first-app/">
+    
       <div className="flex flex-col min-h-screen"> 
         <Header />
         
