@@ -28,17 +28,14 @@ jobs:
 
       - name: Install and Build
         run: |
-          cd Halfnote/Healing/HalfnoteHealing
+          cd HalfnoteHealing
           npm install
           npm run build
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./Halfnote/Healing/HalfnoteHealing/dist
+          path: ./HalfnoteHealing/dist
 
   deploy:
     needs: build
