@@ -17,10 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./Halfnote/Healing/HalfnoteHealing
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,14 +25,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: ./Halfnote/Healing/HalfnoteHealing/package-lock.json
 
-      - name: Install dependencies
-        run: run: cd Halfnote/Healing/HalfnoteHealing && npm install
-
-      - name: Build
-        run: cd Halfnote/Healing/HalfnoteHealing && npm run build
+      - name: Install and Build
+        run: |
+          cd Halfnote/Healing/HalfnoteHealing
+          npm install
+          npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
