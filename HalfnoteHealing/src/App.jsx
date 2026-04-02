@@ -12,7 +12,7 @@ import "./App.css";
 function App() {
   return (
     <>
-    <BrowserRouter basename="/my-first-app/">
+    <BrowserRouter basename="/Halfnote/">
     
       <div className="flex flex-col min-h-screen"> 
         <Header />
