@@ -1,36 +1,31 @@
-import React, { useState } from "react";
+import { useState } from "react"; 
+import { useNavigate } from "react-router-dom";
+import PrimaryButton from "../components/PrimaryButton";
+import Loadingbar from "../components/Loadingbar"; 
 
 function MusicAct() {
-  // Array of activities
-  const activities = [
-    "Listen to your favorite song 🎧",
-    "Go for a short walk 🚶",
-    "Write down how you feel ✍️",
-    "Take 5 deep breaths 🧘",
-    "Watch a relaxing video 🌊",
-    "Stretch for 5 minutes 🤸",
-  ];
+  const [isSubmitted, setIsSubmitted] = useState(false); 
+  const navigate = useNavigate();
 
-  const [currentTask, setCurrentTask] = useState(activities[0]);
-
-  const getRandomTask = () => {
-    const randomIndex = Math.floor(Math.random() * activities.length);
-    setCurrentTask(activities[randomIndex]);
+  const handleDone = () => {
+    setIsSubmitted(true);
+    setTimeout(() => {
+      navigate("/Reflect");
+    }, 1500);
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Music Activity</h2>
+    <div className="w-full max-w-4xl mx-auto text-white flex flex-col items-center pt-24 px-6 min-h-screen">
+      <h1 className="text-4xl font-bold text-white mb-12 tracking-tight">Music Act</h1>
 
-      <div className="bg-white shadow-md rounded-2xl p-6 text-center">
-        <p className="text-lg mb-4">{currentTask}</p>
-
-        <button
-          onClick={getRandomTask}
-          className="bg-blue-500 text-white px-4 py-2 rounded-xl hover:bg-blue-600"
-        >
-          New Activity
-        </button>
+      <div className="mt-20 w-full max-w-md h-24 flex items-center justify-center">
+        {!isSubmitted ? (
+          <PrimaryButton onClick={handleDone}>
+            Done?
+          </PrimaryButton>
+        ) : (
+          <Loadingbar message="Amazing Job!" />
+        )}
       </div>
     </div>
   );
