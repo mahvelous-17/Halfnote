@@ -18,9 +18,11 @@ const [isSubmitted, setIsSubmitted] = useState(false);
   return (
     <div className="w-full max-w-4xl mx-auto min-h-[80vh] flex flex-col items-center justify-center text-center px-6 pt-32 pb-10">
       
+      <HoudiniTxt>
       <h1 className="text-white text-4xl font-bold mb-2">
         Welcome to Halfnote Healing
       </h1>
+      </HoudiniTxt>
       
       <p className="text-white/60 italic mb-10 text-lg">
         "Where your problems are solved and guided through music"

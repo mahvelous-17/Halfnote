@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import MoodButton from "../components/MoodButton"; 
 import PrimaryButton from "../components/PrimaryButton";
 import Loadingbar from "../components/Loadingbar";
+import HoudiniTxt from '../components/HoudiniTxt';
 
 function Reflect() {
   const [note, setNote] = useState('');
@@ -30,7 +31,9 @@ function Reflect() {
   return (
     <div className="w-full max-w-4xl mx-auto text-white flex flex-col items-center pt-24 px-6 min-h-screen">
       <div className="w-full max-w-2xl flex flex-col items-center text-center">
+        <HoudiniTxt>
         <h1 className="text-4xl font-bold text-white mb-2 tracking-tight">Reflection Page</h1>
+        </HoudiniTxt>
         <h2 className="text-3xl font-bold mb-2 tracking-tight">Great JOB!</h2>
         <p className="text-white/50 mb-10 text-sm">How was that Activity? Did it help with your mood?</p>
       </div>
@@ -51,7 +54,7 @@ function Reflect() {
       {/* Reflection Box */}
       <div 
         className="w-full mt-12"
-        style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', padding: '24px', borderRadius: '10px' }}
+        style={{ backgroundColor: '#0000000d', padding: '24px', borderRadius: '10px' }}
       >
         <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-2 text-center">
           Wanna say more? (Recommended!)

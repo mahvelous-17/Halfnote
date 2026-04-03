@@ -2,12 +2,15 @@ import Card from "../components/Card";
 import AndrewImg from "../assets/Andrew.png";
 import RyanImg from "../assets/Ryan.png";
 import Mission from "../components/Mission";
+import HoudiniTxt from "../components/HoudiniTxt";
 
 function About() {
   return (
     <div className="w-full max-w-4xl mx-auto flex flex-col items-center ">
       
+      <HoudiniTxt>
       <h1 className="text-white mb-10 text-3xl font-bold">About Our Team</h1>
+      </HoudiniTxt>
 
       <div style={{ 
         display: "flex", 

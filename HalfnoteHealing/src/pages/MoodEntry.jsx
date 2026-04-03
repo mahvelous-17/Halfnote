@@ -32,7 +32,9 @@ function MoodEntry() {
   return (
     <div className="w-full max-w-4xl mx-auto text-white flex flex-col items-center pt-24 px-6 bg-[#0c0c0c]">
       <div className="w-full flex items-center justify-center gap-1 pb-6">
+        <HoudiniTxt>
         <h1 className="text-4xl font-bold text-white tracking-tight">Log Mood</h1>
+        </HoudiniTxt>
         <StreakCounter days={streak} />
       </div>
 
@@ -56,7 +58,7 @@ function MoodEntry() {
         {/* Reflection Box */}
         <div 
           className="w-full mt-12 rounded-3xl"
-          style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', border: 'none', outline: 'none', boxShadow: 'none', padding: '24px',   borderRadius: '10px',  }}
+          style={{ backgroundColor: '#0000000d', border: 'none', outline: 'none', boxShadow: 'none', padding: '24px',   borderRadius: '10px',  }}
         >
           <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-2">
             Reflection (Recomended)
@@ -68,7 +70,7 @@ function MoodEntry() {
               outline: 'none', 
               boxShadow: 'none', 
               border: 'none',
-              resize: 'none'
+              resize: 'none',
             }}
             placeholder="What's on your mind?"
             value={note}
