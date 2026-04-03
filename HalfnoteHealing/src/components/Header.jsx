@@ -3,11 +3,11 @@ import HoudiniTxt from "./HoudiniTxt";
 
 function Header() {
   const styles = {
-    red: { color: "#ef4444", fontWeight: "500" },
-    cyan: { color: "#22d3ee", fontWeight: "500" },
-    green: { color: "#22c55e", fontWeight: "500" },
-    yellow: { color: "#eab308", fontWeight: "500" },
-    divider: { color: "#6d6d6d", margin: "0 8px" }
+    red: { color: "#7de1ff", fontWeight: "500" },
+    cyan: { color: "#d400ff", fontWeight: "500" },
+    green: { color: "#7de1ff", fontWeight: "500" },
+    yellow: { color: "#d400ff", fontWeight: "500" },
+    divider: { color: "#ffffff", margin: "0 8px" }
   };
 
   return (
