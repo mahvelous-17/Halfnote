@@ -4,6 +4,8 @@ import MoodButton from "../components/MoodButton";
 import StreakCounter from "../components/StreakCounter";
 import PrimaryButton from "../components/PrimaryButton";
 import Loadingbar from "../components/Loadingbar";
+import HoudiniTxt from "../components/HoudiniTxt";
+
 
 function MoodEntry() {
   const [selectedMood, setSelectedMood] = useState("");
