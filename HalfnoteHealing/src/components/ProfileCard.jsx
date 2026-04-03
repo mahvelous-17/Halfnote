@@ -1,3 +1,5 @@
+import HoudiniTxt from "../components/HoudiniTxt";
+
 function ProfileCard({ name, role, bio, image, children }) {
   return (
     <div 
@@ -34,10 +36,12 @@ function ProfileCard({ name, role, bio, image, children }) {
               {children}
             </div>
           </div>
-
+          
+          <HoudiniTxt>  
           <p style={{ color: '#fb923c', fontSize: '14px', fontWeight: '600', textTransform: 'uppercase', margin: '0 0 12px 0' }}>
             {role}
           </p>
+          </HoudiniTxt>
 
           <p style={{ color: 'rgba(255, 255, 255, 0.6)', fontSize: '15px', margin: 0, lineHeight: '1.5' }}>
             "{bio}"
