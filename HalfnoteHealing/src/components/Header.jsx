@@ -50,6 +50,11 @@ function Header() {
           <Link to="/profile" style={styles.yellow} className="hover:underline transition px-4 font-medium">
             Profile
           </Link>
+          <span style={styles.divider}>|</span>
+
+          <Link to="/settings" style={styles.red} className="hover:underline transition px-4 font-medium">
+            Settings
+          </Link>
         </nav>
       </div>
     </header>
