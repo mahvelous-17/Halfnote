@@ -1,51 +1,136 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import MoodButton from "../components/MoodButton"; 
+import { supabase } from "../supabase";
+import MoodButton from "../components/MoodButton";
 import StreakCounter from "../components/StreakCounter";
 import PrimaryButton from "../components/PrimaryButton";
 import Loadingbar from "../components/Loadingbar";
 import HoudiniTxt from "../components/HoudiniTxt";
 
-
-function MoodEntry() {
+function MoodEntry({ session }) {
   const [selectedMood, setSelectedMood] = useState("");
   const [note, setNote] = useState("");
-  const [streak] = useState(7);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
+  const [streak, setStreak] = useState(0);
+  const [saving, setSaving] = useState(false);
   const navigate = useNavigate();
 
   const moods = [
-    { emoji: "😔", label: "Low" },
-    { emoji: "😐", label: "Meh" },
-    { emoji: "🙂", label: "Happy" },
-    { emoji: "😊", label: "Amazing" },
-    { emoji: "✨", label: "Great" }
+    { emoji: "😔", label: "Low", score: 1 },
+    { emoji: "😐", label: "Meh", score: 2 },
+    { emoji: "🙂", label: "Happy", score: 3 },
+    { emoji: "😊", label: "Amazing", score: 4 },
+    { emoji: "✨", label: "Great", score: 5 },
   ];
 
-  const handleCheckMood = () => {
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        navigate("/profile");
+        return;
+      }
+      
+      if (session?.user) {
+        const fetchStreak = async () => {
+          const { data } = await supabase
+            .from("profiles")
+            .select("streak_count")
+            .eq("id", session.user.id)
+            .single();
+          if (data) setStreak(data.streak_count);
+        };
+        fetchStreak();
+      }
+    };
+    
+    checkSession();
+  }, [session, navigate]);
+
+  const handleCheckMood = async () => {
     if (!selectedMood) return alert("Please select a mood emoji first!");
-    setIsSubmitted(true);
-    setTimeout(() => {
-      navigate("/music-act");
-    }, 1500);
+
+    const moodObj = moods.find((m) => m.emoji === selectedMood);
+    const user = session?.user;
+
+    if (!user || !moodObj) return;
+
+    setSaving(true);
+    try {
+      const { data, error } = await supabase
+        .from("mood_entries")
+        .insert([{ user_id: user.id, mood_score: moodObj.score }])
+        .select("id")
+        .single();
+
+      if (error) {
+        console.error(error);
+        alert("Could not save your mood. Please try again.");
+        return;
+      }
+
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", user.id)
+        .single();
+      const today = new Date().toISOString().split("T")[0];
+      let newStreak = 1;
+
+      if (profile) {
+        const lastEntry = profile.last_entry_date;
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        const yesterdayStr = yesterday.toISOString().split("T")[0];
+
+        if (lastEntry === yesterdayStr) {
+          newStreak = profile.streak_count + 1;
+        } else if (lastEntry === today) {
+          newStreak = profile.streak_count;
+        }
+      }
+
+      await supabase.from("profiles").upsert({
+        id: user.id,
+        streak_count: newStreak,
+        last_entry_date: today,
+      });
+
+      await new Promise(resolve => setTimeout(resolve, 1800));
+      navigate("/music-act", {
+        state: { moodEntryId: data.id },
+      });
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto text-white flex flex-col items-center pt-24 px-6 bg-[#0c0c0c]">
-      <div className="w-full flex items-center justify-center gap-1 pb-6">
-        <HoudiniTxt>
-        <h1 className="text-4xl font-bold text-white tracking-tight">Log Mood</h1>
-        </HoudiniTxt>
-        <StreakCounter days={streak} />
-      </div>
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-[#0c0c0c]">
+      <div className="w-full max-w-[480px] flex flex-col items-center gap-6">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+          <HoudiniTxt>
+            <h1 className="text-4xl font-bold text-white tracking-tight">Log Mood</h1>
+          </HoudiniTxt>
+        </div>
 
-      <div className="w-full max-w-2xl mx-auto flex flex-col items-center mt-6 text-center">
-        <h1 className="text-3xl font-bold mb-2 tracking-tight">How are you feeling today?</h1>
-        <p className="text-white/50 mb-10 text-sm">Pick the mood that matches right now</p>
+        <div className="text-center">
+          <h2 className="text-3xl font-bold mb-2 tracking-tight">
+            How are you feeling today?
+          </h2>
+          <p className="text-white/50 mb-10 text-sm">
+            Pick the mood that matches right now
+          </p>
+        </div>
 
-        {/* Mood Buttons */}
-        <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', justifyContent: 'center', gap: '12px', width: '100%', marginTop: '32px' }}>
+        <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'nowrap',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '12px',
+            width: '100%'
+          }}>
           {moods.map((m) => (
             <MoodButton
               key={m.label}
@@ -57,40 +142,35 @@ function MoodEntry() {
           ))}
         </div>
 
-        {/* Reflection Box */}
-        <div 
-          className="w-full mt-12 rounded-3xl"
-          style={{ backgroundColor: '#0000000d', border: 'none', outline: 'none', boxShadow: 'none', padding: '24px',   borderRadius: '10px',  }}
-        >
-          <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-2">
-            Reflection (Recomended)
-          </h3>
-          <textarea
-            rows={4}
-            className="w-full bg-transparent text-white text-lg placeholder-white/10 resize-none text-center"
-            style={{ 
-              outline: 'none', 
-              boxShadow: 'none', 
-              border: 'none',
-              resize: 'none',
+          <div
+            className="w-full rounded-[10px] flex flex-col items-center justify-center"
+            style={{
+              backgroundColor: "rgba(255,255,255,0.05)",
+              border: "none",
+              padding: "24px",
             }}
-            placeholder="What's on your mind?"
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-          />
-        </div>
+          >
+            <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-2">
+              Reflection (Recommended)
+            </h3>
+            <textarea
+              rows={4}
+              className="w-full bg-transparent text-white text-lg placeholder-white/10 resize-none text-center shadow-none"
+              placeholder="What's on your mind?"
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+            />
+          </div>
 
-
-        {/* Success message */}
-     <div className="mt-20 w-full max-w-md h-24 flex items-center justify-center">
-          {!isSubmitted ? (
-            <PrimaryButton onClick={handleCheckMood}>
-              Get Music Guided Activity
-            </PrimaryButton>
-          ) : (
-            <Loadingbar message="Mood logged successfully! Loading your activity" />
-          )}
-        </div>
+          <div className="w-full flex items-center justify-center">
+            {!saving ? (
+              <PrimaryButton onClick={handleCheckMood}>
+                Get Music Guided Activity
+              </PrimaryButton>
+            ) : (
+              <Loadingbar message="Mood logged! Loading your activity..." />
+            )}
+          </div>
       </div>
     </div>
   );

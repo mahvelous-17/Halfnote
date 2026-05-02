@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LikeButton from "./LikeButton";
+import PrimaryButton from "./PrimaryButton";
 
 function Card({ name, title, blurb, extra, img, emoji }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,12 +13,12 @@ function Card({ name, title, blurb, extra, img, emoji }) {
       <p style={{ color: "white", fontWeight: "bold" }}>{title}</p>
       <p style={{ color: "white" }}>{blurb}</p>
 
-      <button onClick={() => setIsOpen(!isOpen)} style={{ background: "#1a1a1a", border: "1px solid white", color: "white", padding: "5px 10px", cursor: "pointer" }}>
+      <PrimaryButton onClick={() => setIsOpen(!isOpen)} className="px-2 py-1 text-xs">
         {isOpen ? "Show Less" : "Show More"}
-      </button>
+      </PrimaryButton>
 
       {isOpen && (
-        <div style={{ marginTop: "10px", padding: "10px", borderTop: "1px solid white" }}>
+        <div style={{ marginTop: "10px", padding: "10px" }}>
           <p style={{ color: "white" }}>{extra}</p>
         </div>
       )}

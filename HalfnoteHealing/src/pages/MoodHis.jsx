@@ -1,74 +1,139 @@
-import React, { useState } from "react";
-import BarGraph from "../components/BarGraph";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../supabase";
 import HoudiniTxt from "../components/HoudiniTxt";
-import PrimaryButton from "../components/PrimaryButton";
 
-const archiveData = {
-  April: [
-    { label: "Week 1", val: 4.5 },
-    { label: "Week 2", val: 3.2 },
-    { label: "Week 3", val: 4.8 },
-    { label: "Week 4", val: 5.0 },
-  ],
-  March: [
-    { label: "Week 1", val: 2.1 },
-    { label: "Week 2", val: 4.0 },
-    { label: "Week 3", val: 3.5 },
-    { label: "Week 4", val: 4.2 },
-  ]
-};
+function getMoodLabel(score) {
+  const labels = {
+    1: "AWFUL",
+    2: "BAD", 
+    3: "MEH",
+    4: "GOOD",
+    5: "GREAT"
+  };
+  return labels[score] || "—";
+}
 
-function MoodHis() {
-  const [selectedMonth, setSelectedMonth] = useState("April");
+function groupEntriesByMonth(entries) {
+  const grouped = {};
+  
+  entries.forEach(entry => {
+    const date = new Date(entry.created_at);
+    const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+    
+    if (!grouped[monthKey]) {
+      grouped[monthKey] = [];
+    }
+    grouped[monthKey].push(entry);
+  });
+  
+  return Object.entries(grouped)
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .map(([monthKey, entries]) => {
+      const [year, month] = monthKey.split('-');
+      const date = new Date(parseInt(year), parseInt(month) - 1, 1);
+      return {
+        monthKey,
+        monthLabel: date.toLocaleDateString("en-US", { month: "long", year: "numeric" }).toUpperCase(),
+        entries: entries.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+      };
+    });
+}
+
+function MoodHis({ session }) {
+  const navigate = useNavigate();
+  const [entries, setEntries] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [groupedEntries, setGroupedEntries] = useState([]);
+  const user = session?.user;
+
+  useEffect(() => {
+    if (!user) {
+      setLoading(false);
+      return;
+    }
+
+    const load = async () => {
+      setLoading(true);
+      
+      const { data: rows } = await supabase
+        .from("mood_entries")
+        .select("id, created_at, mood_score, mood_after")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: false });
+
+      const entriesData = rows ?? [];
+      setEntries(entriesData);
+      setGroupedEntries(groupEntriesByMonth(entriesData));
+      setLoading(false);
+    };
+
+    load();
+  }, [user]);
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) navigate("/profile");
+    };
+    checkSession();
+  }, [navigate]);
+
+  if (!user) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-[#0c0c0c] text-white/40 text-sm">
+        <a
+          href="/profile"
+          className="text-white/50 hover:text-white/80 uppercase tracking-widest text-xs"
+        >
+          Sign in to view mood history
+        </a>
+      </div>
+    );
+  }
 
   return (
-    <div className="w-full min-h-screen bg-[#0c0c0c] text-white pt-32 px-6 flex flex-col items-center">
-      
-      <HoudiniTxt>
-        <h1 className="text-[10px] font-bold uppercase tracking-[0.5em] text-white/30 mb-2">
-          Mood Logs
-        </h1>
-      </HoudiniTxt>
-      <h2 className="text-4xl font-bold tracking-tighter mb-12">History</h2>
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-[#0c0c0c]">
+      <div className="w-full max-w-[480px] flex flex-col items-center gap-6">
+        <HoudiniTxt>
+          <h1 className="text-[10px] font-bold uppercase tracking-[0.5em] text-white/30 mb-2 text-center">
+            Mood Logs
+          </h1>
+        </HoudiniTxt>
+        <HoudiniTxt>
+          <h2 className="text-4xl font-bold tracking-tighter mb-8 text-center">
+            History
+          </h2>
+        </HoudiniTxt>
 
-      <div className="flex gap-4 mb-12">
-        {["March", "April"].map((month) => (
-          <PrimaryButton
-            key={month}
-            onClick={() => setSelectedMonth(month)}
-            className={`transition-opacity duration-300 ${
-              selectedMonth === month ? "text-white opacity-100" : "text-white/30 opacity-60"
-            }`}
-          >
-            {month}
-          </PrimaryButton>
-        ))}
+        {loading ? (
+          <div className="w-full h-6 rounded-lg bg-white/5 animate-pulse mb-3" />
+        ) : groupedEntries.length === 0 ? (
+          <p className="text-white/20 text-[11px] font-bold uppercase tracking-[0.3em] text-center">
+            NO ENTRIES YET
+          </p>
+        ) : (
+          <div className="w-full space-y-8">
+            {groupedEntries.map((group) => (
+              <div key={group.monthKey} className="w-full">
+                <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/20 mt-8 mb-3">
+                  {group.monthLabel}
+                </p>
+                <div className="space-y-2">
+                  {group.entries.map((entry) => (
+                    <p key={entry.id} className="text-[13px] text-white/50">
+                      {new Date(entry.created_at).toLocaleDateString(undefined, {
+                        month: 'short',
+                        day: 'numeric'
+                      })} · {getMoodLabel(entry.mood_score)} → {getMoodLabel(entry.mood_after)}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-
-      <div style={{ 
-        height: '400px',
-        width: '100%', 
-        maxWidth: '700px', 
-        backgroundColor: 'rgba(255, 255, 255, 0.03)', 
-        borderRadius: '16px', 
-        padding: '40px',
-        border: '1px solid rgba(255, 255, 255, 0.05)',
-      }}>
-        
-        <div className="flex justify-between items-center mb-10">
-          <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/30 italic">
-            {selectedMonth} | Mood Average
-          </h3>
-        </div>
-
-        <BarGraph 
-          data={archiveData[selectedMonth]} 
-          chartHeight={280} 
-          spacing={110}    
-        />
-
-      </div>
-      
     </div>
   );
 }

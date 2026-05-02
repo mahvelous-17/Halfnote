@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"; 
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import PrimaryButton from "../components/PrimaryButton";
 import Loadingbar from "../components/Loadingbar"; 
 import HoudiniTxt from "../components/HoudiniTxt";
@@ -13,9 +13,11 @@ const musicTasks = [
 ];
 
 function MusicAct() {
-  const [isSubmitted, setIsSubmitted] = useState(false); 
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [activeTask, setActiveTask] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const moodEntryId = location.state?.moodEntryId;
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * musicTasks.length);
@@ -25,17 +27,17 @@ function MusicAct() {
   const handleDone = () => {
     setIsSubmitted(true);
     setTimeout(() => {
-      navigate("/reflect"); 
+      navigate("/reflect", { state: { moodEntryId } });
     }, 1500);
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#0c0c0c] text-white flex flex-col items-center pt-24 px-6">
-      <div className="w-full max-w-2xl flex flex-col items-center">
-        
-
+    <div className="flex flex-col items-center justify-center w-full min-h-screen mx-auto bg-[#0c0c0c] text-white pt-24 px-6 pb-32">
+      <div className="w-full max-w-2xl flex flex-col items-center justify-center">
         <HoudiniTxt>
-          <h1 className="text-4xl font-bold text-white mb-12 tracking-tight">Mood History</h1>
+          <h1 className="text-4xl font-bold text-white mb-12 tracking-tight text-center">
+            Music Activity
+          </h1>
         </HoudiniTxt>
         
         <HoudiniTxt className="flex justify-center mb-6">

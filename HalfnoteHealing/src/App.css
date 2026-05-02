@@ -1,11 +1,35 @@
-*, html, body, #root {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+button,
+input,
+textarea,
+select,
+a {
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 textarea {
   font-family: inherit;
+}
+
+textarea:focus,
+button:focus,
+input:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 a {
@@ -13,13 +37,13 @@ a {
   color: inherit;
 }
 
-html, body {
+html,
+body {
   width: 100%;
-  background-color: #080808;
+  min-height: 100%;
+  background-color: #0c0c0c;
   color: white;
   font-family: sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
 #root {
@@ -31,8 +55,14 @@ html, body {
   text-align: center;
 }
 
-h1, h2, h3, p, span, li, a {
-  color: white ;
+h1,
+h2,
+h3,
+p,
+span,
+li,
+a {
+  color: white;
 }
 
 .counter {
@@ -41,13 +71,12 @@ h1, h2, h3, p, span, li, a {
   border-radius: 5px;
   color: var(--accent);
   background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
+  transition: opacity 0.3s;
   margin-bottom: 24px;
 }
 
 .counter:hover {
-  border-color: var(--accent-border);
+  opacity: 0.9;
 }
 
 .icon {
@@ -57,19 +86,19 @@ h1, h2, h3, p, span, li, a {
 }
 
 #docs {
-  border-right: 1px solid var(--border);
+  border-right: none;
 }
 
 @media (max-width: 1024px) {
   #docs {
     border-right: none;
-    border-bottom: 1px solid var(--border);
+    border-bottom: none;
   }
 }
 
 #spacer {
   height: 88px;
-  border-top: 1px solid var(--border);
+  border-top: none;
 }
 
 @media (max-width: 1024px) {
@@ -78,38 +107,17 @@ h1, h2, h3, p, span, li, a {
   }
 }
 
-.ticks {
-  position: relative;
-  width: 100%;
-}
-
-.ticks::before, .ticks::after {
-  content: '';
-  position: absolute;
-  top: -4.5px;
-  border: 5px solid transparent;
-}
-
-.ticks::before {
-  left: 0;
-  border-left-color: var(--border);
-}
-
+.ticks::before,
 .ticks::after {
-  right: 0;
-  border-right-color: var(--border);
+  content: none;
+  display: none;
 }
-/* The Reflection Box */
+
 .mood-reflection-card {
-  background-color: rgba(24, 24, 27, 0.8); /* Zinc-900 with slight transparency */
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(24, 24, 27, 0.8);
+  border: none;
   border-radius: 24px;
   padding: 1.5rem;
-  transition: border-color 0.3s ease;
-}
-
-.mood-reflection-card:focus-within {
-  border-color: rgba(255, 255, 255, 0.2); /* Glow slightly when typing */
 }
 
 .emoji-btn {
@@ -121,6 +129,7 @@ h1, h2, h3, p, span, li, a {
   flex-direction: column;
   align-items: center;
   outline: none;
+  box-shadow: none;
 }
 
 .emoji-btn.selected {

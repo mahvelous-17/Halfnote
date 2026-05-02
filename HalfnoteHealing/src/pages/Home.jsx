@@ -16,7 +16,7 @@ const [isSubmitted, setIsSubmitted] = useState(false);
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto min-h-[80vh] flex flex-col items-center justify-center text-center px-6 pt-32 pb-10">
+    <div className="flex flex-col items-center justify-center w-full min-h-screen mx-auto max-w-4xl text-center px-6 pt-32 pb-10 bg-[#0c0c0c]">
       
       <HoudiniTxt>
       <h1 className="text-white text-4xl font-bold mb-2">

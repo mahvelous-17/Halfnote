@@ -6,7 +6,7 @@ import HoudiniTxt from "../components/HoudiniTxt";
 
 function About() {
   return (
-    <div className="w-full max-w-4xl mx-auto flex flex-col items-center ">
+    <div className="flex flex-col items-center justify-center w-full min-h-screen mx-auto max-w-4xl bg-[#0c0c0c] px-6 pt-28 pb-24">
       
       <HoudiniTxt>
       <h1 className="text-white mb-10 text-3xl font-bold">About Our Team</h1>

@@ -1,30 +1,40 @@
 import HoudiniTxt from "../components/HoudiniTxt";
+import StreakCounter from "./StreakCounter";
 
-function ProfileCard({ name, role, bio, image, children }) {
+function ProfileCard({ name, role, bio, image, session, streak, children }) {
+  const avatarUrl = session?.user?.user_metadata?.avatar_url ?? null;
+
   return (
-    <div 
-      style={{ 
-        width: '100%', 
-        maxWidth: '650px', 
-        backgroundColor: 'rgba(255, 255, 255, 0.05)', 
-        borderRadius: '10px', 
-        padding: '30px',
-        border: '0',
-        outline: 'none'
+    <div
+      style={{
+        width: "100%",
+        maxWidth: "650px",
+        backgroundColor: "rgba(255, 255, 255, 0.05)",
+        borderRadius: "10px",
+        padding: "30px",
+        border: "none",
+        outline: "none",
+        boxShadow: "none",
       }}
     >
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '24px', textAlign: 'left' }}>
         
-        <img 
-          src={image} 
-          alt={name} 
-          style={{ 
-            width: '100px', 
-            height: '100px', 
-            borderRadius: '12px', 
-            objectFit: 'cover'
-          }} 
-        />
+        {avatarUrl ? (
+          <img 
+            src={avatarUrl} 
+            alt={name} 
+            style={{ 
+              width: '100px', 
+              height: '100px', 
+              borderRadius: '12px', 
+              objectFit: 'cover'
+            }} 
+          />
+        ) : (
+          <div className="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center text-white/60 text-lg font-bold uppercase">
+            {session?.user?.email?.[0] ?? "?"}
+          </div>
+        )}
 
         <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
           
@@ -33,7 +43,7 @@ function ProfileCard({ name, role, bio, image, children }) {
               {name}
             </h2>
             <div style={{ transform: 'scale(0.7)', transformOrigin: 'right' }}>
-              {children}
+              <StreakCounter days={streak} />
             </div>
           </div>
           
