@@ -25,18 +25,15 @@ export default function AuthPage() {
   };
 
   const handleGoogleLogin = async () => {
-  const { error } = await supabase.auth.signInWithOAuth({
-    provider: 'google',
-    options: {
-      redirectTo: `${window.location.origin}/profile`
-    }
-  });
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}/#/profile`
+      }
+    });
 
-  if (error) alert(error.message);
-};
-
-  if (error) alert(error.message);
-};
+    if (error) alert(error.message);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center w-full min-h-screen mx-auto pt-24 px-6 bg-[#0c0c0c]">
@@ -106,3 +103,4 @@ export default function AuthPage() {
       </div>
     </div>
   );
+}
