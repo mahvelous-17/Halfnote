@@ -10,6 +10,20 @@ export default function AuthPage() {
   const [isSignUp, setIsSignUp] = useState(false);
   const navigate = useNavigate();
 
+  const handleGoogleLogin = async () => {
+    const isLocal = window.location.hostname === 'localhost';
+    const targetUrl = isLocal 
+      ? 'http://localhost:3000/Halfnote/profile' 
+      : 'https://mahvelous-17.github.io/Halfnote/profile';
+
+    await supabase.auth.signInWithOAuth({ 
+      provider: 'google',
+      options: {
+        redirectTo: targetUrl
+      }
+    });
+  };
+
   const handleAuth = async (e) => {
     e.preventDefault();
     
