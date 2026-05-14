@@ -25,12 +25,6 @@ export default function AuthPage() {
   };
 
   const handleGoogleLogin = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${window.location.origin}/#/profile`
-      }
-    });
 
     if (error) alert(error.message);
   };
@@ -95,10 +89,6 @@ export default function AuthPage() {
         </div>
 
         <div className="flex justify-center">
-          <PrimaryButton onClick={handleGoogleLogin} className="w-full gap-3">
-            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="16" alt="Google" />
-            Continue with Google
-          </PrimaryButton>
         </div>
       </div>
     </div>
